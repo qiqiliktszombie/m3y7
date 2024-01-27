@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      background: yellow;
+    }
+    #image {
+      position: absolute;
+      width: 300px;
+      transition: all 0.5s;
+    }
+    #num {
+      position: absolute;
+      right: 0%;
+      color: darkmagenta;
+    }
+  </style>
+  <body>
+    <h1 id="num"></h1>
+    <img
+      id="image"
+      src="https://e7.pngegg.com/pngimages/606/504/png-clipart-dachshund-maltese-dog-puppy-pet-sitting-puppy-animals-carnivoran-thumbnail.png"
+    />
+  </body>
+
+  <script>
+    let num = document.getElementById("num");
+    let img = document.getElementById("image");
+
+    let score = 0;
+    img.addEventListener("click",clickImg);
+
+    function clickImg() {
+        score += 1;
+        if (score >=3){
+            img.style.display = "none";
+        }
+        num.innerHTML = score;
+    } 
+    function getRnd(min, max) {
+      return Math.floor(Math.random() * (max - min)) + min;
+    }
+    function moveImg() {
+      let x = getRnd(0, 50);
+      let y = getRnd(0, 50);
+      img.style.left = x + "%";
+      img.style.top = y + "%";
+    }
+    moveImg();
+    setInterval(moveImg, 1000)
+  </script>
+</html>
